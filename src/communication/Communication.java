@@ -5,6 +5,7 @@
 package communication;
 
 import domain.Zaposleni;
+import java.io.IOException;
 import java.net.Socket;
 
 /**
@@ -17,11 +18,13 @@ public class Communication {
     private Sender sender;
     private Receiver receiver;
 
-    private Communication() {
-        
+    private Communication() throws IOException {
+        socket = new Socket("localhost",9000);
+        sender = new Sender(socket);
+        receiver = new Receiver(socket);
     }
     
-    public static Communication getInstance(){
+    public static Communication getInstance() throws IOException{
         if(instance == null)
             instance = new Communication();
         return instance;
@@ -32,13 +35,15 @@ public class Communication {
     }
 
     public Response login(Request request) throws Exception {
-        new Sender(socket).send(request);
+        sender.send(request);
         System.out.println("Zahtev za prijavom na sistem je poslat...");
-        return (Response) new Receiver(socket).receive();
+        return (Response) receiver.receive();
     }
-    
-    
-    
-    
+
+    public Response ucitajKupce(Request request) throws Exception {
+        sender.send(request);
+        System.out.println("Zahtev za ucitavanje kupaca je poslat");
+        return (Response) receiver.receive();
+    }
     
 }

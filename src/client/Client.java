@@ -4,6 +4,7 @@
  */
 package client;
 
+import controller.LoginController;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -16,22 +17,11 @@ import view.LoginForm;
  */
 public class Client {
     public static void main(String[] args) {
-        Client client = new Client();
-        try {
-            client.connect();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        LoginForm forma = new LoginForm();
+        LoginController lc = new LoginController(forma);
+        lc.pokreniFomru();
     }
 
-    private void connect() throws IOException {
-        Socket socket = new Socket("localhost", 9000);
-        System.out.println("Klijent se povezao!");
-        communication.Communication.getInstance().setSocket(socket);
-        LoginForm forma = new LoginForm();
-        new controller.LoginController(forma);
-        forma.setVisible(true);
-        
-    }
+    
     
 }

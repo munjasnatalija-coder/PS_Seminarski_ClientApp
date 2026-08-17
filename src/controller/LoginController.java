@@ -4,12 +4,9 @@
  */
 package controller;
 
-import communication.Communication;
 import domain.Zaposleni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import view.LoginForm;
 import view.MainForm;
@@ -37,7 +34,7 @@ public class LoginController {
                 try {
                     String username= forma.getTxtUsername().getText().trim();
                     String password = String.valueOf(forma.getTxtPassword().getPassword()).trim();
-                    Zaposleni ulogovani = Controller.getInstnace().login(username, password);
+                    Zaposleni ulogovani = Controller.getInstance().login(username, password);
                     JOptionPane.showMessageDialog(forma, "Prijava na sistem je uspesna", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
                     forma.dispose();
                     MainForm mainForm = new MainForm(ulogovani);
@@ -50,4 +47,7 @@ public class LoginController {
         });
     }
     
+    public void pokreniFomru(){
+        forma.setVisible(true);
+    }
 }
