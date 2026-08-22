@@ -8,15 +8,16 @@ import domain.Zaposleni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import view.LoginForm;
-import view.MainForm;
+import javax.swing.SpringLayout;
+import forms.LoginForm;
+import forms.MainForm;
 
 /**
  *
  * @author Natalija
  */
 public class LoginController {
-    private final LoginForm forma;
+    /*private final LoginForm forma;
 
     public LoginController(LoginForm forma) {
         this.forma = forma;
@@ -35,12 +36,14 @@ public class LoginController {
                     String username= forma.getTxtUsername().getText().trim();
                     String password = String.valueOf(forma.getTxtPassword().getPassword()).trim();
                     Zaposleni ulogovani = Controller.getInstance().login(username, password);
-                    JOptionPane.showMessageDialog(forma, "Prijava na sistem je uspesna", "Uspeh", JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println("USPESNO LOGIN");
+                    JOptionPane.showMessageDialog(forma, "Korisničko ime i šifra su ispravni.", "Uspešno!", JOptionPane.INFORMATION_MESSAGE);
                     forma.dispose();
+                    System.out.println("USPESNO LOGIN");
                     MainForm mainForm = new MainForm(ulogovani);
                     mainForm.setVisible(true);
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(forma, "Prijava na sistem nije uspela", "Neuspeh", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(forma, "Korisničko ime i šifra nisu ispravni.", "Greška!", JOptionPane.ERROR_MESSAGE);
                     ex.printStackTrace();
                 }
             }
@@ -50,4 +53,5 @@ public class LoginController {
     public void pokreniFomru(){
         forma.setVisible(true);
     }
+*/
 }

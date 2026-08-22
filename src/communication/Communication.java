@@ -34,16 +34,9 @@ public class Communication {
         this.socket = socket;
     }
 
-    public Response login(Request request) throws Exception {
+    public Response send(Request request, String name) throws Exception{
         sender.send(request);
-        System.out.println("Zahtev za prijavom na sistem je poslat...");
+        System.out.println("Uspesno poslat zahtev ["+name+"] ..");
         return (Response) receiver.receive();
     }
-
-    public Response ucitajKupce(Request request) throws Exception {
-        sender.send(request);
-        System.out.println("Zahtev za ucitavanje kupaca je poslat");
-        return (Response) receiver.receive();
-    }
-    
 }

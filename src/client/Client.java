@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import view.LoginForm;
+import forms.LoginForm;
 
 /**
  *
@@ -18,8 +18,7 @@ import view.LoginForm;
 public class Client {
     public static void main(String[] args) {
         LoginForm forma = new LoginForm();
-        LoginController lc = new LoginController(forma);
-        lc.pokreniFomru();
+        forma.setVisible(true);
     }
 
     
